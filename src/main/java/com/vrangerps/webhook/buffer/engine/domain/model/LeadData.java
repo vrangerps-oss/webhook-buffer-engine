@@ -54,4 +54,15 @@ public class LeadData {
     public void setCompany(String company) {
         this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return "LeadData{" +
+                "leadId='" + leadId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", company='" + company + '\'' +
+                '}';
+    }
 }
