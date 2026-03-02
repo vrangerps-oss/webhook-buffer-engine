@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  # Container 1: RabbitMQ
+  rabbitmq:
+    image: rabbitmq:4.2.4-management
+    container_name: lead_engine_rabbit
+    ports:
+      - "5672:5672" # Port for Java to connect
+      - "15672:15672" # Port for your Web Browser UI
+    # Defaults to username 'guest', password 'guest'
