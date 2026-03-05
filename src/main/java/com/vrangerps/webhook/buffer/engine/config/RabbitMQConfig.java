@@ -4,33 +4,28 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-    @Value("${rabbitmq.queue.name}")
-    private String queueName;
 
-    @Value("${rabbitmq.exchange.name}")
-    private String exchangeName;
-
-    @Value("${rabbitmq.routing.key}")
-    private String routingKey;
+    public static final String QUEUE_NAME = "webhookQueue";
+    public static final String EXCHANGE_NAME = "webhookExchange";
+    public static final String ROUTING_KEY = "webhookRoutingKey";
 
     @Bean
     public Queue queue(){
-        return new Queue(queueName);
+        return new Queue(QUEUE_NAME);
     }
 
     @Bean
     public TopicExchange exchange(){
-        return new TopicExchange(exchangeName);
+        return new TopicExchange(EXCHANGE_NAME);
     }
 
     @Bean
     public Binding binding(){
-        return BindingBuilder.bind(queue()).to(exchange()).with(routingKey);
+        return BindingBuilder.bind(queue()).to(exchange()).with(ROUTING_KEY);
     }
 }
