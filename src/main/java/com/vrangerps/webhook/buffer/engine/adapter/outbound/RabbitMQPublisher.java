@@ -17,6 +17,6 @@ public class RabbitMQPublisher implements LeadEventPublisher {
 
     @Override
     public void publishLeadEvent(LeadData leadData) {
-        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, leadData.toString());
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, leadData);
     }
 }
